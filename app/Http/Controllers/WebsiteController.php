@@ -12,7 +12,6 @@ class WebsiteController extends Controller
     {
         $website = Website::where([
             'name' => $request->name,
-
         ])->first();
 
         if ($website) {
