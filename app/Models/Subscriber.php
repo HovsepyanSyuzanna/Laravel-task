@@ -2,15 +2,19 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
+/**
+ * @property string $email
+ * @property int $website_id
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ */
 class Subscriber extends Model
 {
     use HasFactory;
-
-    protected $table = 'suscribers';
 
     protected $fillable = [
         'email',
@@ -19,7 +23,6 @@ class Subscriber extends Model
 
     public function website()
     {
-        return $this->belongsToMany(Website::class
-        )->withTimestamps();
+        return $this->belongsToMany(Website::class)->withTimestamps();
     }
 }

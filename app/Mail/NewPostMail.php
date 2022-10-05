@@ -21,7 +21,6 @@ class NewPostMail extends Mailable
     {
         $this->title = $title;
         $this->description = $description;
-
     }
 
     /**

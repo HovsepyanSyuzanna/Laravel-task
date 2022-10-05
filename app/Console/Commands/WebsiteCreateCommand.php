@@ -2,10 +2,8 @@
 
 namespace App\Console\Commands;
 
-
 use App\Models\Website;
 use Illuminate\Console\Command;
-use Illuminate\Support\Str;
 
 class WebsiteCreateCommand extends Command
 {
@@ -14,7 +12,7 @@ class WebsiteCreateCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'website:create';
+    protected $signature = 'website:create {name}';
 
     /**
      * The console command description.
@@ -30,12 +28,21 @@ class WebsiteCreateCommand extends Command
      */
     public function handle()
     {
-        Website::create([
-            'name' => Str::random(10),
+        /** @var Website $website */
+        $website = Website::where([
+            'name' => $this->argument('name'),
+        ])->first();
 
+        if ($website) {
+            $this->info('You have already  created  a website');
+            return 0;
+
+        }
+
+        Website::create([
+            'name' => $this->argument('name'),
         ]);
 
-
-        $this->info('Website  created successfully!!!');
+        return 0;
     }
 }

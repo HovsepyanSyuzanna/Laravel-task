@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use App\Models\Post;
 use Illuminate\Console\Command;
-use Illuminate\Support\Str;
 
 class PostAddCommand extends Command
 {
@@ -13,7 +12,7 @@ class PostAddCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'create:posts ' ;
+    protected $signature = 'create:posts {title} {description} {website_id}';
 
     /**
      * The console command description.
@@ -34,13 +33,24 @@ class PostAddCommand extends Command
      */
     public function handle()
     {
+        /** @var Post $post */
+        $post = Post::where([
+            'title' => $this->argument('title'),
+            'description' => $this->argument('description'),
+            'website_id' => $this->argument('website_id'),
+        ])->first();
+
+        if ($post) {
+            $this->info('This website already have post with this title');
+            return  0;
+        }
+
         Post::create([
-            'title' => Str::random(10),
-            'description' => Str::random(10),
-            'website_id' =>mt_rand(1,25),
+            'title' => $this->argument('title'),
+            'description' => $this->argument('description'),
+            'website_id' => $this->argument('website_id'),
         ]);
 
-
-        $this->info('Post  created successfully!!!');
+        return 0;
     }
 }

@@ -9,7 +9,6 @@ use App\Models\Subscriber;
 
 class PostController extends Controller
 {
-
     public function postCreate(PostRequest $request)
     {
         $post = Post::where([
@@ -19,7 +18,7 @@ class PostController extends Controller
         ])->first();
 
         if ($post) {
-            return 'You have already created a post';
+            return 'The post are created Successfully!';
         }
 
         Post::create([
@@ -33,5 +32,7 @@ class PostController extends Controller
         foreach ($subscribers as $subscriber) {
             SendEmailJob::dispatch($request->title, $request->description,$subscriber->email);
         }
+     return 0;
     }
+
 }

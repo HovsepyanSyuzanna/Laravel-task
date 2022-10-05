@@ -2,11 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Http\Requests\PostRequest;
 use App\Jobs\SendEmailJob;
-use App\Mail\NewPostMail;
 use App\Models\Subscriber;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Console\Command;
 
 class SendEmailCommand extends Command
@@ -22,6 +19,7 @@ class SendEmailCommand extends Command
      * The console command description.
      *
      * @var string
+     *
      */
     protected $description = 'Sending emails to the subscribers';
 

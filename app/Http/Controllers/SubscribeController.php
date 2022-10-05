@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SubscribeRequest;
 use App\Models\Subscriber;
 
-
 class SubscribeController extends Controller
 {
     public function subscribe(SubscribeRequest $request)
@@ -16,14 +15,11 @@ class SubscribeController extends Controller
         ])->first();
 
         if ($subscriber) {
-            return 'You have already subscribed!!!!';
+            return 'You are subscribed Successfully!';
         }
-        Subscriber::create([
+        return Subscriber::create([
             'email' => $request->email,
             'website_id' => $request->website_id
         ]);
-
     }
-
-
 }

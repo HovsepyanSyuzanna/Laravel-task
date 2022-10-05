@@ -1,7 +1,6 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Api\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/subscribe',[SubscribeController::class,'subscribe']);
-Route::post('/website',[WebsiteController::class,'addName']);
-Route::post('/postCreate',[\App\Http\Controllers\PostController::class,'postCreate']);
+Route::post('/website',[WebsiteController::class,'createWebsite']);
+Route::post('/postCreate',[PostController::class,'postCreate']);
 
