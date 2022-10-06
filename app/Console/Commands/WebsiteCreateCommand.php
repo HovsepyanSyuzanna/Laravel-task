@@ -12,7 +12,7 @@ class WebsiteCreateCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'website:create {name}';
+    protected $signature = 'website:create {name} {email}';
 
     /**
      * The console command description.
@@ -31,6 +31,7 @@ class WebsiteCreateCommand extends Command
         /** @var Website $website */
         $website = Website::where([
             'name' => $this->argument('name'),
+            'email' => $this->argument('email'),
         ])->first();
 
         if ($website) {
@@ -41,6 +42,7 @@ class WebsiteCreateCommand extends Command
 
         Website::create([
             'name' => $this->argument('name'),
+            'email' => $this->argument('email'),
         ]);
 
         return 0;

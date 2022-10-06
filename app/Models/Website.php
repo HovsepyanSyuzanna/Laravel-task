@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property string $name
+ * @property string $email
  * @property int $website_id
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -18,12 +19,12 @@ class Website extends Model
 
     protected $fillable = [
         'name',
+        'email',
         'website_id'
     ];
 
     public function subscriber()
     {
-
         return $this->belongsToMany(Subscriber::class)->withTimestamps();;
     }
 

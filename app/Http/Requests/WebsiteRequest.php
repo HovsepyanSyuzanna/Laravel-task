@@ -24,6 +24,11 @@ class WebsiteRequest extends FormRequest
                 'string',
                 'unique:websites,name'
             ],
+            'email' => [
+                'required',
+                'string',
+                'unique'
+            ]
 
         ];
     }

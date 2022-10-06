@@ -15,7 +15,7 @@ class CreateSubscriberCommand extends Command
     protected $signature = 'subscribe  {email} {website_id}';
 
     /**
-     * The console command description.
+     * The console command description
      *
      * @var string
      */

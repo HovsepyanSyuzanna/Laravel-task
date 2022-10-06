@@ -11,14 +11,16 @@ class WebsiteController extends Controller
     {
         $website = Website::where([
             'name' => $request->name,
+            'email' => $request->email,
         ])->first();
 
         if ($website) {
-            return 'The website are created';
+            return 'The website exists';
         }
 
         return Website::create([
             'name' => $request->name,
+            'email'=>$request->email,
         ]);
     }
 }
